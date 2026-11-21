@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>KANGELISM</title>
+<title>andreini</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
 <style>
 :root{--pn:#121212;--hv:#232323;--mu:#a7a7a7;--g:#2be38a;--g2:#6cf5c2;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -182,8 +182,8 @@ const GN=[...new Set(ALB.map(a=>a.g))].map(n=>({n,h:ALB.find(a=>a.g==n).h}));
 
 /* ---- State ---- */
 let S={liked:[],pls:[{id:'p1',n:'My First Mix',t:[]}],recent:[],vol:.7,shuf:0,rep:0,al:[],ar:[]};
-try{Object.assign(S,JSON.parse(localStorage.getItem('kangelism')||'{}'))}catch(e){}
-const save=()=>{try{localStorage.setItem('kangelism',JSON.stringify(S))}catch(e){}};
+try{Object.assign(S,JSON.parse(localStorage.getItem('andreini')||'{}'))}catch(e){}
+const save=()=>{try{localStorage.setItem('andreini',JSON.stringify(S))}catch(e){}};
 let Q=[],qi=-1,cur=null,view='home',arg='',H='home',q='',lt='pl',qo=0,drag=0,lastV=0,tint=150,tt;
 const $=s=>document.querySelector(s),V=$('#view'),M=$('#main');
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -259,7 +259,7 @@ V.classList.remove('fx');void V.offsetWidth;V.classList.add('fx');M.scrollTop=0;
 
 /* ---- Player ---- */
 function ctxT(c){const[k,i]=c.split(':');return k=='all'?TR:k=='al'?TR.filter(t=>t.al==i):k=='ar'?TR.filter(t=>t.ar==i):k=='pl'?(S.pls.find(p=>p.id==i)||{t:[]}).t.map(x=>TM[x]):k=='liked'?S.liked.map(x=>TM[x]):k=='s'?sf():[]}
-function load(id,off=0){cur=TM[id];S.recent=[id,...S.recent.filter(x=>x!=id)].slice(0,24);save();Eng.start(cur,off);document.title=cur.t+' – KANGELISM';updP();render()}
+function load(id,off=0){cur=TM[id];S.recent=[id,...S.recent.filter(x=>x!=id)].slice(0,24);save();Eng.start(cur,off);document.title=cur.t+' – ANDREINI';updP();render()}
 function playT(id,c){Q=(c?ctxT(c):[TM[id]]).map(t=>t.id);qi=Q.indexOf(id);if(qi<0){Q=[id];qi=0}load(id)}
 function playC(c){const l=ctxT(c);if(!l.length)return toast('Add a song first');Q=l.map(t=>t.id);qi=S.shuf?Math.random()*Q.length|0:0;load(Q[qi])}
 function tog(){if(!cur)return playC('all');Eng.on?Eng.stop():Eng.start(cur,Eng.pos);updP()}
